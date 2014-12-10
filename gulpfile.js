@@ -11,6 +11,12 @@ var complexity    = require('gulp-complexity');
 var jshint        = require('gulp-jshint');
 var sprite        = require('css-sprite').stream;
 var path          = require('path');
+var svgo          = require('gulp-svgo');
+var iconFont      = require('gulp-iconfont');
+var consolidate   = require('gulp-consolidate');
+var del           = require('del');
+var runSequence   = require('run-sequence');
+var watch         = require('gulp-watch');
 var child_process = require('child_process');
 
 var serverProcess;
@@ -42,16 +48,10 @@ function restartServer() {
 }
 
 function reload(file) {
-  return function() {
-    if (file) {
-      livereload.changed(file);
-    } else {
-      livereload.changed();
-    }
-  };
+  return function() { livereload.changed(file); };
 }
 
-function reloadImage(e) {
+function reloadPublicAsset(e) {
   livereload.changed(e.path.replace(path.join(__dirname, 'public'), ''));
 }
 
@@ -59,40 +59,42 @@ gulp.task('server', function() {
   livereload.listen();
   startServer();
 
-  gulp.watch('./client/js/**/*.js', reload('/default.js')); gulp.watch('./client/scss/**/*.scss', ['scss']);
-  gulp.watch('./client/images/ui-elements/**/*.png', ['sprites']);
-  gulp.watch('./client/jade/**/*.jade', reload());
+  watch('client/js/**/*.js', reload('/default.js'));
+  watch('client/scss/**/*.scss', function() { gulp.start('scss'); });
+  watch('client/images/ui-elements/*.png', function() { gulp.start('sprites'); });
+  watch('client/jade/**/*.jade', livereload.changed);
+  watch('client/images/vectors/src/*.svg', { verbose: true }, function() { gulp.start('vectors-font'); });
 
-  gulp.watch('./public/images/**/*', reloadImage);
-  gulp.watch('./public/default.css', reload('/default.css'));
+  watch('public/{images,fonts}/**/*', reloadPublicAsset);
+  watch('public/default.css', reloadPublicAsset);
 
-  gulp.watch('./routes/**/*.js', restartServer);
-  gulp.watch('./app.js', restartServer);
+  watch('routes/**/*.js', restartServer);
+  watch('app.js', restartServer);
 });
 
 gulp.task('scss', function() {
-  return gulp.src('./client/scss/{default,ui-elements}.scss')
+  return gulp.src('client/scss/{default,ui-elements}.scss')
     .pipe(plumber(plumberOptions))
     .pipe(sourcemaps.init())
     .pipe(scss(scssOptions))
     .pipe(sourcemaps.write())
     .pipe(plumber.stop())
-    .pipe(gulp.dest('./public/'));
+    .pipe(gulp.dest('public/'));
 });
 
 gulp.task('complexity', function() {
-  return gulp.src('./client/js/**/*.js')
+  return gulp.src('client/js/**/*.js')
     .pipe(complexity());
 });
 
 gulp.task('jshint', function() {
-  return gulp.src('./client/js/**/*.js')
+  return gulp.src('client/js/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter(require('jshint-stylish')));
 });
 
 gulp.task('sprites', function() {
-  return gulp.src('./client/images/ui-elements/**/*.png')
+  return gulp.src('client/images/ui-elements/*.png')
     .pipe(sprite({
       prefix: 'ui-element',
       name: 'ui-elements',
@@ -102,10 +104,46 @@ gulp.task('sprites', function() {
     }))
     .pipe(gulpif(
       '*.png',
-      gulp.dest('./public/images/'),
-      gulp.dest('./client/scss/modules')
+      gulp.dest('public/images/'),
+      gulp.dest('client/scss/modules/')
     ));
 });
 
-gulp.task('default', ['scss', 'server']);
+gulp.task('vectors-font', function(cb) {
+  runSequence(
+    'vectors-font:clean-optimized-svgs',
+    'vectors-font:optimize-svgs',
+    'vectors-font:create',
+    cb
+  );
+});
+
+gulp.task('vectors-font:clean-optimized-svgs', function(cb) {
+  del('client/images/vectors/optimized/*.svg', cb);
+});
+
+gulp.task('vectors-font:optimize-svgs', function() {
+  return gulp.src('client/images/vectors/src/*.svg')
+    .pipe(svgo())
+    .pipe(gulp.dest('client/images/vectors/optimized/'));
+});
+
+gulp.task('vectors-font:create', function() {
+  return gulp.src('client/images/vectors/src/*.svg')
+    .pipe(iconFont({ fontName: 'vectors' }))
+    .on('codepoints', function(codepoints) {
+      gulp.src('lib/gulp/_vector-font.scss')
+        .pipe(consolidate('lodash', {
+          glyphs: codepoints,
+          fontName: 'vectors',
+          fontPath: '/fonts/'
+        }))
+        .pipe(gulp.dest('client/scss/modules/'));
+    })
+    .pipe(gulp.dest('public/fonts/'));
+});
+
+gulp.task('default', function() {
+  runSequence(['vectors-font', 'sprites'], 'scss', 'server');
+});
 

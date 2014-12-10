@@ -1,0 +1,40 @@
+// This file is created by a Gulp task. Do not edit directly
+
+@font-face {
+	font-family: 'vectors';
+	src: url('/fonts/vectors.eot');
+	src: url('/fonts/vectors.eot?#iefix') format('eot'),
+		url('/fonts/vectors.woff') format('woff'),
+		url('/fonts/vectors.ttf') format('truetype');
+}
+
+%vector {
+	font-family: 'vectors';
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	text-decoration: none;
+	text-transform: none;
+}
+
+@function vector-char($filename) {
+	$char: "";
+
+	@if $filename == mail { $char: "\E001"; }
+
+	@return $char;
+}
+
+@mixin vector($filename, $insert: before) {
+	&:#{$insert} {
+		@extend %vector;
+		content: vector-char($filename);
+	}
+}
+
+.vector-mail {
+	@include vector(mail);
+}
+

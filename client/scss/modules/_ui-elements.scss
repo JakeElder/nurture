@@ -5,7 +5,7 @@
 @media (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
   .ui-element {
     background-image: url('/images/ui-elements@2x.png');
-    background-size: 106px 65px;
+    background-size: 29px 29px;
   }
 }
 
@@ -13,11 +13,5 @@
   background-position: -2px -2px;
   width: 24px;
   height: 24px;
-}
-
-.ui-element-logo {
-  background-position: -2px -31px;
-  width: 101px;
-  height: 31px;
 }
 

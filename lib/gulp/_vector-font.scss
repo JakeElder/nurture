@@ -1,0 +1,41 @@
+// This file is created by a Gulp task. Do not edit directly
+
+@font-face {
+	font-family: '<%= fontName %>';
+	src: url('<%= fontPath %><%= fontName %>.eot');
+	src: url('<%= fontPath %><%= fontName %>.eot?#iefix') format('eot'),
+		url('<%= fontPath %><%= fontName %>.woff') format('woff'),
+		url('<%= fontPath %><%= fontName %>.ttf') format('truetype');
+}
+
+%vector {
+	font-family: '<%= fontName %>';
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	text-decoration: none;
+	text-transform: none;
+}
+
+@function vector-char($filename) {
+	$char: "";
+<% _.each(glyphs, function(glyph) { %>
+	@if $filename == <%= glyph.name %> { $char: "\<%= glyph.codepoint.toString(16).toUpperCase() %>"; }<% }); %>
+
+	@return $char;
+}
+
+@mixin vector($filename, $insert: before) {
+	&:#{$insert} {
+		@extend %vector;
+		content: vector-char($filename);
+	}
+}
+
+<% _.each(glyphs, function(glyph) { %>.vector-<%= glyph.name %> {
+	@include vector(<%= glyph.name %>);
+}
+<% }); %>
+
