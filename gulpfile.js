@@ -17,6 +17,7 @@ var consolidate   = require('gulp-consolidate');
 var del           = require('del');
 var runSequence   = require('run-sequence');
 var watch         = require('gulp-watch');
+var mocha         = require('gulp-mocha');
 var child_process = require('child_process');
 
 var serverProcess;
@@ -48,6 +49,7 @@ function restartServer() {
 }
 
 function reload(file) {
+  if (!file) { return function() { livereload.changed(); }; }
   return function() { livereload.changed(file); };
 }
 
@@ -62,7 +64,7 @@ gulp.task('server', function() {
   watch('client/js/**/*.js', reload('/default.js'));
   watch('client/scss/**/*.scss', function() { gulp.start('scss'); });
   watch('client/images/ui-elements/*.png', function() { gulp.start('sprites'); });
-  watch('client/jade/**/*.jade', livereload.changed);
+  watch('client/jade/**/*.jade', reload());
   watch('client/images/vectors/src/*.svg', { verbose: true }, function() { gulp.start('vectors-font'); });
 
   watch('public/{images,fonts}/**/*', reloadPublicAsset);
@@ -141,6 +143,11 @@ gulp.task('vectors-font:create', function() {
         .pipe(gulp.dest('client/scss/modules/'));
     })
     .pipe(gulp.dest('public/fonts/'));
+});
+
+gulp.task('mocha', function() {
+  return gulp.src('test/{unit,integration}/**/*.js', { read: false })
+    .pipe(mocha());
 });
 
 gulp.task('default', function() {
