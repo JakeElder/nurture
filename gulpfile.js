@@ -65,7 +65,7 @@ gulp.task('server', function() {
   watch('client/scss/**/*.scss', function() { gulp.start('scss'); });
   watch('client/images/ui-elements/*.png', function() { gulp.start('sprites'); });
   watch('client/jade/**/*.jade', reload());
-  watch('client/images/vectors/src/*.svg', { verbose: true }, function() { gulp.start('vectors-font'); });
+  watch('client/images/vectors/src/*.svg', function() { gulp.start('vectors-font'); });
 
   watch('public/{images,fonts}/**/*', reloadPublicAsset);
   watch('public/default.css', reloadPublicAsset);
