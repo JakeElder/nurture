@@ -2,7 +2,7 @@
 // Dependencies
 //==============================================================================
 
-var pages = require('../app/controllers/pages');
+var index = require('../app/controllers/index');
 
 
 //==============================================================================
@@ -10,6 +10,7 @@ var pages = require('../app/controllers/pages');
 //==============================================================================
 
 module.exports = function(app) {
-  app.use('/', pages);
+  'use strict';
+  app.use('/', index);
 };
 

@@ -90,7 +90,13 @@ gulp.task('complexity', function() {
 });
 
 gulp.task('jshint', function() {
-  return gulp.src('client/js/**/*.js')
+  return gulp.src('{app,lib,config}/**/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter(require('jshint-stylish')));
+});
+
+gulp.task('jshint:tests', function() {
+  return gulp.src('test/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter(require('jshint-stylish')));
 });
@@ -146,6 +152,7 @@ gulp.task('vectors-font:create', function() {
 });
 
 gulp.task('mocha', function() {
+  process.env.NODE_ENV = 'test';
   return gulp.src('test/{unit,integration}/**/*.js', { read: false })
     .pipe(mocha());
 });

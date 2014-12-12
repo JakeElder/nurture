@@ -17,7 +17,13 @@ var router = express.Router();
 //==============================================================================
 
 router.get('/', function(req, res) {
-  res.render('pages/index', { pages: [{title: 'x'}] });
+  'use strict';
+  res.render('index', {
+    title: 'title',
+    ideas: [
+      { title: 'x' }
+    ]
+  });
 });
 
 

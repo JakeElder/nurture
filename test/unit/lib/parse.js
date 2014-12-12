@@ -24,12 +24,14 @@ var MY_REST_API_KEY = 'MY_API_KEY';
 //==============================================================================
 
 function getParse(unconfigured) {
+  'use strict';
   var localParse = _.clone(Parse, true);
   if (unconfigured) { return localParse; }
   return configureParse(localParse);
 }
 
 function configureParse(localParse) {
+  'use strict';
   return localParse.configure(MY_APP_ID, MY_REST_API_KEY);
 }
 
@@ -39,6 +41,8 @@ function configureParse(localParse) {
 //==============================================================================
 
 describe('Parse', function() {
+
+  'use strict';
 
   describe('#configure', function() {
     it('should set APP_ID and REST_API_KEY', function() {
@@ -63,11 +67,11 @@ describe('Parse', function() {
           'X-Parse-Application-Id': Parse.APP_ID,
           'X-Parse-REST-API-Key': Parse.REST_API_KEY
         }
-      }).should.equal(true);
+      }).should.be.true;
     });
 
     it('should return a promise', function() {
-      Q.isPromise(getParse().get('models')).should.equal(true);
+      Q.isPromise(getParse().get('models')).should.be.true;
     });
 
     it('should eventually return an array', function() {

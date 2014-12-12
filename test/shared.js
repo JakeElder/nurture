@@ -19,6 +19,9 @@ var shared = {};
 //==============================================================================
 
 shared.shouldReturnOK = function() {
+
+  'use strict';
+
   it('should return 200 OK', function(done) {
     request(app)
       .get(this.url)

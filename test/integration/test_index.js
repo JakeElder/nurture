@@ -2,15 +2,23 @@
 // Dependencies
 //==============================================================================
 
-var request  = require('supertest');
-var should   = require('should');
-var Factory  = require('rosie').Factory;
+var Browser = require('zombie');
+var should  = require('should');
+var Factory = require('rosie').Factory;
 
 var Page = require('../../app/models/page');
 require('../factories/page');
 
 var app    = require('../../app');
 var shared = require('../shared');
+var getServer = require('../helpers/get-server');
+
+
+//==============================================================================
+// Setup
+//==============================================================================
+
+Browser.default.silent = true;
 
 
 //==============================================================================
@@ -18,24 +26,29 @@ var shared = require('../shared');
 //==============================================================================
 
 describe('Index', function() {
+
+  'use strict';
+
   describe('Get /', function() {
 
-    before(function() { this.url = '/'; });
+    var server;
+
+    before(function() {
+      this.url = '/';
+      return getServer().then(function(s) { server = s; });
+    });
+
+    after(function(done) {
+      server.instance.close(done);
+    });
 
     shared.shouldReturnOK();
 
-    describe('with two pages in the data store', function() {
-      before(function(done) {
-        done();
+    it('should contain a summary section', function() {
+      return Browser.visit(server.url + '/').then(function(browser) {
+        should(browser.query('.summary')).be.ok;
       });
-
-      after(function(done) {
-        done();
-      });
-
-      it('should render two pages');
     });
-
   });
 });
 

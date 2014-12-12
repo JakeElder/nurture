@@ -19,7 +19,9 @@ app.set('views', path.join(__dirname, 'client/jade'));
 app.set('view engine', 'jade');
 
 // Logger
-app.use(require('morgan')('dev'));
+if (app.get('env') === 'development') {
+  app.use(require('morgan')('dev'));
+}
 
 // Static assets
 app.use(express.static(path.join(__dirname, 'public')));

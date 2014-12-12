@@ -24,16 +24,18 @@ var MyModel = Parse.Model.create('class');
 
 describe('Parse.Model', function() {
 
+  'use strict';
+
   describe('#all', function() {
     it('should invoke Parse.get with the class name', function() {
       var spy = sinon.spy(Parse, 'get');
       MyModel.all();
-      spy.calledWith('class').should.equal(true);
+      spy.calledWith('class').should.be.true;
       Parse.get.restore();
     });
 
     it('should return a promise', function() {
-      Q.isPromise(MyModel.all()).should.equal(true);
+      Q.isPromise(MyModel.all()).should.be.true;
     });
 
     it('should eventually return an array', function() {
