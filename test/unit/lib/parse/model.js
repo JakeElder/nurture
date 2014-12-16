@@ -26,7 +26,7 @@ describe('Parse.Model', function() {
 
   'use strict';
 
-  describe('#all', function() {
+  describe('.all', function() {
     it('should invoke Parse.get with the class name', function() {
       var spy = sinon.spy(Parse, 'get');
       MyModel.all();

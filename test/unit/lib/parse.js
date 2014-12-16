@@ -44,7 +44,7 @@ describe('Parse', function() {
 
   'use strict';
 
-  describe('#configure', function() {
+  describe('.configure', function() {
     it('should set APP_ID and REST_API_KEY', function() {
       var Parse = getParse(true);
       Parse.configure(MY_APP_ID, MY_REST_API_KEY);
@@ -55,7 +55,7 @@ describe('Parse', function() {
     });
   });
 
-  describe('#get', function() {
+  describe('.get', function() {
     it('should make a GET request to the Parse API', function() {
       var spy = sinon.spy();
       Parse.__with__({ request: spy })(function() {
