@@ -6,7 +6,6 @@ var should            = require('should');
 var sinon             = require('sinon');
 
 var DispositionHelper = require('../../../app/helpers/disposition');
-var NotReadyException = require('../../../app/exceptions/not-ready');
 
 
 //==============================================================================
