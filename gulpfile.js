@@ -1,3 +1,5 @@
+/* jshint strict: false */
+
 var gulp          = require('gulp');
 var gulpif        = require('gulp-if');
 var gutil         = require('gulp-util');
@@ -17,7 +19,6 @@ var consolidate   = require('gulp-consolidate');
 var del           = require('del');
 var runSequence   = require('run-sequence');
 var watch         = require('gulp-watch');
-var mocha         = require('gulp-mocha');
 var child_process = require('child_process');
 
 var serverProcess;
@@ -70,7 +71,7 @@ gulp.task('server', function() {
   watch('public/{images,fonts}/**/*', reloadPublicAsset);
   watch('public/default.css', reloadPublicAsset);
 
-  watch('routes/**/*.js', restartServer);
+  watch('{config,app}/**/*.js', restartServer);
   watch('app.js', restartServer);
 });
 
@@ -149,12 +150,6 @@ gulp.task('vectors-font:create', function() {
         .pipe(gulp.dest('client/scss/modules/'));
     })
     .pipe(gulp.dest('public/fonts/'));
-});
-
-gulp.task('mocha', function() {
-  process.env.NODE_ENV = 'test';
-  return gulp.src('test/{unit,integration}/**/*.js', { read: false })
-    .pipe(mocha());
 });
 
 gulp.task('default', function() {

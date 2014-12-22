@@ -28,6 +28,7 @@ describe('Parse.Model', function() {
 
   describe('.all', function() {
     it('should invoke Parse.get with the class name', function() {
+      debugger
       var spy = sinon.spy(Parse, 'get');
       MyModel.all();
       spy.calledWith('class').should.be.true;
@@ -61,6 +62,45 @@ describe('Parse.Model', function() {
         }).then(function() {
           Parse.get.restore();
         });
+      });
+    });
+  });
+
+  describe('.filter', function() {
+    it('should invoke .all', function() {
+      var spy = sinon.spy(MyModel, 'all');
+      MyModel.filter();
+      spy.calledOnce.should.be.true;
+      MyModel.all.restore();
+    });
+
+    it('should return a promise', function() {
+      Q.isPromise(MyModel.filter()).should.be.true;
+    });
+
+    it('should eventually return an array', function() {
+      var deferred = Q.defer();
+      deferred.resolve([]);
+      var stub = sinon.stub(MyModel, 'all').returns(deferred.promise);
+      return MyModel.filter().then(function(models) {
+        models.should.be.instanceOf(Array);
+      }).then(function() {
+        MyModel.all.restore();
+      });
+    });
+
+    it('should eventually invoke _.filter on models returned by all', function() {
+      var models = [new MyModel(), new MyModel()];
+      var criteria = {};
+      var deferred = Q.defer();
+      deferred.resolve(models);
+      var stub = sinon.stub(MyModel, 'all').returns(deferred.promise);
+      var spy = sinon.spy(_, 'filter');
+      return MyModel.filter(criteria).then(function() {
+        _.filter.calledWith(models, criteria).should.be.true;
+      }).then(function() {
+        MyModel.all.restore();
+        _.filter.restore();
       });
     });
   });

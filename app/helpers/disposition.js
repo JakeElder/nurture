@@ -4,7 +4,8 @@
  * Helper class for determining the disposition of the page
  *
  * Example usage:
- * var disposition = new DispositionHelper(queryString);
+ * var disposition = new DispositionHelper();
+ * dispostion.init({A: 'CAM'}, {A: 'FRAN'});
  * disposition.ready.then(function() {
  *   disposition.audience;
  *    => 'CAM'
@@ -24,10 +25,9 @@
 // Dependencies
 //==============================================================================
 
-var Q                 = require('q');
-var _                 = require('lodash');
-var querystring       = require('querystring');
-var array             = require('ensure-array');
+var Q           = require('q');
+var _           = require('lodash');
+var array       = require('ensure-array');
 
 var NotReadyException = require('../exceptions/not-ready');
 
@@ -86,59 +86,73 @@ _.each(DispositionHelper.PROPERTIES, function(val, property) {
   });
 });
 
-Object.defineProperty(proto, 'queryString', {
-  set: function(string) {
-    'use strict';
-    this._queryString = querystring.parse(string);
-    this._deferred.resolve();
-  }
-});
-
 
 //==============================================================================
-// Private functions
+// Private methods
 //==============================================================================
 
 proto._getProperty = function(property) {
   'use strict';
 
   // Throw an exception if the instance isn't ready
-  if (this.ready.state !== 'fulfilled') { throw new NotReadyException(); }
+  if (!this.ready.isFulfilled()) { throw new NotReadyException(); }
 
-  // Return the value as set in the query string (if present and valid)
-  var queryStringValue = this._getQueryStringValue(property);
-  if (queryStringValue) { return queryStringValue; }
+  // Return the value as set in the query (if present and valid)
+  var queryValue = this._getQueryValue('explicit', property);
+  if (queryValue) { return queryValue; }
+
+  // Next try the default query
+  var defaultQueryValue = this._getQueryValue('default', property);
+  if (defaultQueryValue) { return defaultQueryValue; }
 
   // Otherwise return the default
   return DispositionHelper.PROPERTIES[property].default;
 };
 
-proto._getQueryStringValue = function(property) {
+proto._getQueryValue = function(query, property) {
   'use strict';
 
-  // No query string value if no query string
-  if (!this._queryString) { return false; }
+  // Get the pertinent query string
+  if (query === 'default') {
+    query = this._defaultQuery;
+  } else if (query === 'explicit') {
+    query = this._query;
+  }
 
   // Get property definition and the value that was passed for that property
-  // in the query string (if any)
+  // in the query (if any)
   var propertyDefinition = DispositionHelper.PROPERTIES[property];
-  var value = this._queryString[propertyDefinition.key];
+  var value              = query[propertyDefinition.key];
 
-  // Return false if there was no value for this property in the query string
+  // Return false if there was no value for this property in the query
   if (!value) { return false; }
 
   // Ensure that the value(s) is included in the array of valid values for this
   // property
+  if (!this._validValue(property, value)) { return false; }
+
+  // Value is set and valid, return it
+  return value;
+};
+
+proto._validValue = function(property, value) {
+  'use strict';
   var possibleValues = DispositionHelper.PROPERTIES[property].possibleValues;
-  var validValues = _.every(array(value), function(val) {
+  return _.every(array(value), function(val) {
     return possibleValues.indexOf(val) !== -1;
   });
+};
 
-  // Return false if any of the values specified in the query string are invalid
-  if (!validValues) { return false; }
 
-  // Return the value specified in the set query string
-  return value;
+//==============================================================================
+// Public methods
+//==============================================================================
+
+proto.init = function(defaultQuery, query) {
+  'use strict';
+  this._defaultQuery = defaultQuery;
+  this._query        = query;
+  this._deferred.resolve();
 };
 
 

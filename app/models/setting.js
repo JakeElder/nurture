@@ -2,37 +2,34 @@
 // Dependencies
 //==============================================================================
 
-var request = require('supertest');
-var should  = require('should');
-var app     = require('../app');
-var nock    = require('nock');
+var Parse = require('parse');
+var Q     = require('q');
+var _     = require('lodash');
 
 
 //==============================================================================
-// Setup
+// Model definition
 //==============================================================================
 
-var shared = {};
+debugger
+var Setting = Parse.Model.create('settings');
 
 
 //==============================================================================
-// Shared tests
+// Class methods
 //==============================================================================
 
-shared.shouldReturnOK = function() {
-
+Setting.getHash = function() {
   'use strict';
-
-  nock('https://api.parse.com').get('/1/classes/settings').reply(200, {
-    results: []
+  var deferred = Q.defer();
+  this.all().then(function(models) {
+    var hash = new Setting.Hash();
+    _.each(models, function(model) {
+      hash[model.key] = model.value;
+    });
+    deferred.resolve(hash);
   });
-
-  it('should return 200 OK', function(done) {
-    request(app)
-      .get(this.url)
-      .expect(200)
-      .end(done);
-  });
+  return deferred.promise;
 };
 
 
@@ -40,5 +37,5 @@ shared.shouldReturnOK = function() {
 // Export
 //==============================================================================
 
-module.exports = shared;
+module.exports = Setting;
 

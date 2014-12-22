@@ -2,7 +2,10 @@
 // Dependencies
 //==============================================================================
 
-var express  = require('express');
+var Q           = require('q');
+var express     = require('express');
+var disposition = require('disposition');
+var Idea        = require('models/idea');
 
 
 //==============================================================================
@@ -18,11 +21,13 @@ var router = express.Router();
 
 router.get('/', function(req, res) {
   'use strict';
-  res.render('index', {
-    title: 'title',
-    ideas: [
-      { title: 'x' }
-    ]
+  Idea.filter(function(idea) {
+    return disposition.upsell.indexOf(idea.cID) !== -1;
+  }).then(function(ideas) {
+    res.render('index', {
+      title: 'O2 Nurture',
+      ideas: ideas
+    });
   });
 });
 
