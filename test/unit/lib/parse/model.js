@@ -8,27 +8,27 @@ var sinon      = require('sinon');
 var rewire     = require('rewire');
 var should     = require('should');
 
-var Parse = rewire('../../../../lib/parse/parse');
+var Parse      = require('parse');
+var ParseModel = require('parse/model');
 
 
 //==============================================================================
 // Setup
 //==============================================================================
 
-var MyModel = Parse.Model.create('class');
+var MyModel = ParseModel.create('class');
 
 
 //==============================================================================
 // Tests
 //==============================================================================
 
-describe('Parse.Model', function() {
+describe('ParseModel', function() {
 
   'use strict';
 
   describe('.all', function() {
     it('should invoke Parse.get with the class name', function() {
-      debugger
       var spy = sinon.spy(Parse, 'get');
       MyModel.all();
       spy.calledWith('class').should.be.true;

@@ -2,7 +2,7 @@
 // Dependencies
 //==============================================================================
 
-var Parse = require('parse');
+var Model = require('parse/model');
 var Q     = require('q');
 var _     = require('lodash');
 
@@ -11,8 +11,8 @@ var _     = require('lodash');
 // Model definition
 //==============================================================================
 
-debugger
-var Setting = Parse.Model.create('settings');
+var Setting = Model.create('settings');
+Setting.Hash = function() {};
 
 
 //==============================================================================
