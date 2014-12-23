@@ -65,6 +65,20 @@ Object.defineProperty(proto, 'title', {
   }
 });
 
+/* introduction */
+Object.defineProperty(proto, 'introduction', {
+  enumerable: true,
+  get: function() {
+    'use strict';
+    return {
+      heading: this._contentFragments.INTRODUCTION_HEADING,
+      copy: this._contentFragments.INTRODUCTION_COPY,
+      goad: this._contentFragments.INTRODUCTION_GOAD
+    };
+  }
+});
+
+
 /* ideas */
 Object.defineProperty(proto, 'ideas', {
   enumerable: true,
@@ -73,8 +87,8 @@ Object.defineProperty(proto, 'ideas', {
 
     var viewModel = this;
 
-    // Return an object with two arrays, ideas.upsell and ideas.whyO2
-    return _.mapValues({ 'upsell': [], 'whyO2': [] }, function(val, section) {
+    // Create an object containing two arrays, ideas.upsell and ideas.whyO2
+    var ideas = _.mapValues({ 'upsell': [], 'whyO2': [] }, function(val, section) {
       // Get an array of relevant ideas, sorted by their order as defined
       // in the disposition helper
       return viewModel._ideas.filter(function(idea) {
@@ -85,6 +99,14 @@ Object.defineProperty(proto, 'ideas', {
         return aIndex - bIndex;
       });
     });
+
+    // Add their appearance numbers
+    ideas.upsell[0].number = 1;
+    ideas.upsell[1].number = 2;
+    ideas.whyO2[0].number  = 3;
+    ideas.whyO2[1].number  = 4;
+
+    return ideas;
   }
 });
 
