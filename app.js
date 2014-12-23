@@ -37,25 +37,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/default.js', browserify(path.join(__dirname, 'client/js/default.js')));
 
 // Bootstrap routes
-app.use(function(req, res, next) {
-  'use strict';
-  // Make sure settings have been retrieved before continuing
-  Setting.getHash().then(function(settings) {
-    var defaultQuery = querystring.parse(settings.DEFAULT_QUERY_STRING);
-    disposition.init(defaultQuery, req.query);
-    next();
-  });
-});
 require('routes')(app);
 
 
 //==============================================================================
 // Error Handlers
 //==============================================================================
-
-app.use('/', function(req, res) {
-  'use strict';
-});
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {

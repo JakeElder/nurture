@@ -4,8 +4,7 @@
 
 var Q           = require('q');
 var express     = require('express');
-var disposition = require('disposition');
-var Idea        = require('models/idea');
+var ViewModel   = require('view-models/index');
 
 
 //==============================================================================
@@ -19,15 +18,12 @@ var router = express.Router();
 // Actions
 //==============================================================================
 
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
   'use strict';
-  Idea.filter(function(idea) {
-    return disposition.upsell.indexOf(idea.cID) !== -1;
-  }).then(function(ideas) {
-    res.render('index', {
-      title: 'O2 Nurture',
-      ideas: ideas
-    });
+  new ViewModel(req.query).ready.then(function(model) {
+    res.render('index', model);
+  }, function(err) {
+    next(err);
   });
 });
 

@@ -35,7 +35,9 @@ function scssErrorHandler(err) {
 }
 
 function startServer() {
-  serverProcess = child_process.fork(__dirname + '/bin/www');
+  serverProcess = child_process.fork(__dirname + '/bin/www', [], {
+    execArgv: ['--debug=45455']
+  });
   serverProcess.on('message', function(m) {
     if (m.started) {
       gutil.log('Express server started');
