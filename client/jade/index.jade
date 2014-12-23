@@ -1,14 +1,8 @@
 extends layout
 
 block content
-  include introduction
-
-  section.upsell-ideas
-    each idea in ideas.upsell
-      include idea
-
-  section.why-o2-ideas
-    each idea in ideas.whyO2
-      include idea
-
-  include summary
+  include index/introduction
+  include index/upsell-ideas
+  include index/why-o2-ideas
+  include index/summary
+  include index/terms-and-conditions

@@ -122,14 +122,27 @@ Object.defineProperty(proto, 'summary', {
   }
 });
 
+/* termsAndConditions */
+Object.defineProperty(proto, 'termsAndConditions', {
+  enumerable: true,
+  get: function() {
+    'use strict';
+    return {
+      heading: this._contentFragments.TERMS_AND_CONDITIONS_HEADING,
+      copy: this._contentFragments.TERMS_AND_CONDITIONS_COPY
+    };
+  }
+});
+
 /* footer */
 Object.defineProperty(proto, 'footer', {
   enumerable: true,
   get: function() {
     'use strict';
+    var content = this._contentFragments;
     return {
-      termsAndConditionsLabel: this._contentFragments.FOOTER_TERMS_AND_CONDITIONS_LABEL,
-      copyrightCopy: this._contentFragments.FOOTER_COPYRIGHT_COPY
+      termsandconditionslabel: content.FOOTER_TERMS_AND_CONDITIONS_LABEL,
+      copyrightcopy: content.FOOTER_COPYRIGHT_COPY
     };
   }
 });
