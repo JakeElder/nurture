@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  include index/introduction
+  include introduction
 
   section.upsell-ideas
     each idea in ideas.upsell
@@ -11,3 +11,4 @@ block content
     each idea in ideas.whyO2
       include idea
 
+  include summary

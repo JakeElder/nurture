@@ -78,7 +78,6 @@ Object.defineProperty(proto, 'introduction', {
   }
 });
 
-
 /* ideas */
 Object.defineProperty(proto, 'ideas', {
   enumerable: true,
@@ -86,9 +85,10 @@ Object.defineProperty(proto, 'ideas', {
     'use strict';
 
     var viewModel = this;
+    var ideas = { 'upsell': [], 'whyO2': [] };
 
     // Create an object containing two arrays, ideas.upsell and ideas.whyO2
-    var ideas = _.mapValues({ 'upsell': [], 'whyO2': [] }, function(val, section) {
+    ideas = _.mapValues(ideas, function(val, section) {
       // Get an array of relevant ideas, sorted by their order as defined
       // in the disposition helper
       return viewModel._ideas.filter(function(idea) {
@@ -107,6 +107,30 @@ Object.defineProperty(proto, 'ideas', {
     ideas.whyO2[1].number  = 4;
 
     return ideas;
+  }
+});
+
+/* summary */
+Object.defineProperty(proto, 'summary', {
+  enumerable: true,
+  get: function() {
+    'use strict';
+    return {
+      heading: this._contentFragments.SUMMARY_HEADING,
+      copy: this._contentFragments.SUMMARY_COPY
+    };
+  }
+});
+
+/* footer */
+Object.defineProperty(proto, 'footer', {
+  enumerable: true,
+  get: function() {
+    'use strict';
+    return {
+      termsAndConditionsLabel: this._contentFragments.FOOTER_TERMS_AND_CONDITIONS_LABEL,
+      copyrightCopy: this._contentFragments.FOOTER_COPYRIGHT_COPY
+    };
   }
 });
 
