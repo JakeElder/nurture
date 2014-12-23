@@ -70,6 +70,12 @@ DispositionHelper.PROPERTIES = {
     key: 'U',
     possibleValues: ['APPS', 'TAB', 'PUO', 'BB_L'],
     default: ['APPS', 'PUO']
+  },
+  whyO2: {
+    key: 'WO',
+    possibleValues: ['MY_O2_B', 'TU_GO', 'PRIORITY', 'TRAVEL', 'WIFI', 'GURU',
+      'BLOG', 'ENEWS', '4G', 'ROAM'],
+    default: ['MY_O2_B', 'BLOG']
   }
 };
 

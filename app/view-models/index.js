@@ -2,9 +2,9 @@
 // Dependencies
 //==============================================================================
 
-var Q           = require('q');
-var _           = require('lodash');
-var querystring = require('querystring');
+var Q                 = require('q');
+var _                 = require('lodash');
+var querystring       = require('querystring');
 
 var ContentFragment   = require('models/content-fragment');
 var Idea              = require('models/idea');
@@ -71,23 +71,20 @@ Object.defineProperty(proto, 'ideas', {
   get: function() {
     'use strict';
 
-    // Save reference to this
     var viewModel = this;
 
-    // Filter down to the needed ideas
-    var ideas = this._ideas.filter(function(idea) {
-      console.log(viewModel._disposition.upsell);
-      return viewModel._disposition.upsell.indexOf(idea.cID) !== -1;
+    // Return an object with two arrays, ideas.upsell and ideas.whyO2
+    return _.mapValues({ 'upsell': [], 'whyO2': [] }, function(val, section) {
+      // Get an array of relevant ideas, sorted by their order as defined
+      // in the disposition helper
+      return viewModel._ideas.filter(function(idea) {
+        return viewModel._disposition[section].indexOf(idea.cID) !== -1;
+      }).sort(function(a, b) {
+        var aIndex = viewModel._disposition[section].indexOf(a.cID);
+        var bIndex = viewModel._disposition[section].indexOf(b.cID);
+        return aIndex - bIndex;
+      });
     });
-
-    // Sort according to order in disposition
-    ideas.sort(function(a, b) {
-      var aIndex = viewModel._disposition.upsell.indexOf(a.cID);
-      var bIndex = viewModel._disposition.upsell.indexOf(b.cID);
-      return aIndex - bIndex;
-    });
-
-    return ideas;
   }
 });
 

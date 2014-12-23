@@ -3,6 +3,11 @@ extends layout
 block content
   h1= title
 
-  for idea in ideas
-    include idea
+  div.upsell-ideas
+    for idea in ideas.upsell
+      include idea
+
+  div.why-o2-ideas
+    for idea in ideas.whyO2
+      include idea
 
