@@ -5,7 +5,6 @@
 var Q          = require('q');
 var _          = require('lodash');
 var sinon      = require('sinon');
-var rewire     = require('rewire');
 var should     = require('should');
 
 var Parse      = require('parse');
@@ -105,6 +104,15 @@ describe('ParseModel', function() {
     });
   });
 
-});
+  describe('.mixin', function() {
+    it('should extend the subjects with passed class methods', function() {
+      var classMethods = { exampleMethod: function() {} };
+      var spy = sinon.spy(_, 'extend');
+      MyModel.mixin({ classMethods: classMethods});
+      spy.calledWith(MyModel, classMethods);
+      _.extend.restore();
+    });
+  });
 
+});
 

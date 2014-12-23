@@ -8,7 +8,7 @@ var sinon  = require('sinon');
 var rewire = require('rewire');
 var should = require('should');
 
-var Parse  = rewire('../../../lib/parse/parse');
+var Parse  = rewire('parse');
 
 
 //==============================================================================
