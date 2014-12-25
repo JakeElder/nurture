@@ -2,9 +2,9 @@
 // Dependencies
 //==============================================================================
 
-var Q           = require('q');
-var express     = require('express');
-var ViewModel   = require('view-models/index');
+var Q         = require('q');
+var express   = require('express');
+var ViewModel = require('view-models/index');
 
 
 //==============================================================================
@@ -21,7 +21,11 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   'use strict';
   new ViewModel(req.query).ready.then(function(model) {
-    res.render('index', model);
+    try {
+      res.render('index', model);
+    } catch (err) {
+      next(err);
+    }
   }, function(err) {
     next(err);
   });

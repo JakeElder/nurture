@@ -141,8 +141,8 @@ Object.defineProperty(proto, 'footer', {
     'use strict';
     var content = this._contentFragments;
     return {
-      termsandconditionslabel: content.FOOTER_TERMS_AND_CONDITIONS_LABEL,
-      copyrightcopy: content.FOOTER_COPYRIGHT_COPY
+      termsAndConditionsLabel: content.FOOTER_TERMS_AND_CONDITIONS_LABEL,
+      copyrightCopy: content.FOOTER_COPYRIGHT_COPY
     };
   }
 });
