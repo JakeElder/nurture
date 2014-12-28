@@ -40,8 +40,13 @@ function startServer() {
   });
   serverProcess.on('message', function(m) {
     if (m.started) {
-      gutil.log('Express server started');
       livereload.changed();
+      gutil.log(gutil.colors.yellow('-----------------------------------'));
+      gutil.log(
+        gutil.colors.cyan('Express server started on port ') +
+        gutil.colors.magenta(3000)
+      );
+      gutil.log(gutil.colors.yellow('-----------------------------------'));
     }
   });
 }
