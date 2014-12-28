@@ -121,7 +121,7 @@ gulp.task('sprites', function() {
     .pipe(gulpif(
       '*.png',
       gulp.dest('public/images/'),
-      gulp.dest('client/scss/modules/')
+      gulp.dest('client/scss/base/')
     ));
 });
 
@@ -146,7 +146,7 @@ gulp.task('vectors-font:optimize-svgs', function() {
 
 gulp.task('vectors-font:create', function() {
   return gulp.src('client/images/vectors/src/*.svg')
-    .pipe(iconFont({ fontName: 'vectors' }))
+    .pipe(iconFont({ fontName: 'vectors', normalize: true }))
     .on('codepoints', function(codepoints) {
       gulp.src('lib/gulp/_vector-font.scss')
         .pipe(consolidate('lodash', {
@@ -154,7 +154,7 @@ gulp.task('vectors-font:create', function() {
           fontName: 'vectors',
           fontPath: '/fonts/'
         }))
-        .pipe(gulp.dest('client/scss/modules/'));
+        .pipe(gulp.dest('client/scss/base/'));
     })
     .pipe(gulp.dest('public/fonts/'));
 });

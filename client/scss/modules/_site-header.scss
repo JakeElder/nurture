@@ -1,0 +1,18 @@
+/**
+ * Site header
+ * -----------
+ * The site wide application header
+ */
+
+.site-header {
+  @extend %alabaster-fade-box;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.site-header__logo {
+  @extend %o2-business-logo;
+  font-size: 30px;
+}
+

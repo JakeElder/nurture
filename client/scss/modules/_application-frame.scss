@@ -1,0 +1,10 @@
+/**
+ * Application frame
+ * -----------------
+ * The main frame for the application
+ */
+
+.application-frame {
+  @extend %main-font;
+  @extend %jelly-bean-box;
+}

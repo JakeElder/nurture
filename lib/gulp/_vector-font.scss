@@ -28,9 +28,11 @@
 }
 
 @mixin vector($filename, $insert: before) {
+  display: inline-block;
 	&:#{$insert} {
 		@extend %vector;
 		content: vector-char($filename);
+    vertical-align: top;
 	}
 }
 

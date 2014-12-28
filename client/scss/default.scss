@@ -1,10 +1,44 @@
+/**
+ * Default stylesheet
+ * ------------------
+ * The default application stylesheet
+ */
+
+
+// Vendor
+// ------
 @import 'reset';
 @import 'bourbon';
 
-@import 'modules/ui-elements';
-@import 'modules/vector-font';
 
+// Base
+// ----
+// Independent reusable blocks from which modules build upon
+@import 'base/colors';
+@import 'base/typography';
+@import 'base/ui-elements';
+@import 'base/vector-font';
+
+
+// Abstract
+// --------
+// Abstract styles to be implemented by modules. Make use of base styles
+@import 'abstract/boxes';
+@import 'abstract/logos';
+
+
+// Modules
+// -------
+// Visual modules. Should not depend upon each other. Common code should be
+// abstracted in to base scss
+@import 'modules/application-frame';
+@import 'modules/site-header';
+
+
+// Shorthand applications
+// ----------------------
+// Attach basic styles to the DOM
 body {
-  background-color: #fff;
+  @extend .application-frame;
 }
 

@@ -22,19 +22,29 @@
 @function vector-char($filename) {
 	$char: "";
 
-	@if $filename == mail { $char: "\E001"; }
+	@if $filename == chevron-right { $char: "\E001"; }
+	@if $filename == o2-business { $char: "\E002"; }
+	@if $filename == telefonica { $char: "\E003"; }
 
 	@return $char;
 }
 
 @mixin vector($filename, $insert: before) {
+  display: inline-block;
 	&:#{$insert} {
 		@extend %vector;
 		content: vector-char($filename);
+    vertical-align: top;
 	}
 }
 
-.vector-mail {
-	@include vector(mail);
+.vector-chevron-right {
+	@include vector(chevron-right);
+}
+.vector-o2-business {
+	@include vector(o2-business);
+}
+.vector-telefonica {
+	@include vector(telefonica);
 }
 

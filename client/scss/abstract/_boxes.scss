@@ -1,0 +1,19 @@
+/**
+ * Boxes
+ * -----
+ * Basic box styles.
+ * All should be placeholders, and extended by modules as to not attach
+ * presentational information to the DOM.
+ * Declared alphabetically
+ */
+
+
+%alabaster-fade-box {
+  @include background-image(linear-gradient(top, $gallery 25%, $alabaster 100%));
+}
+
+%jelly-bean-box {
+  background-color: $jelly-bean;
+  color: $white;
+}
+
