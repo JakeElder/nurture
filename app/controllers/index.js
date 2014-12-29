@@ -2,7 +2,6 @@
 // Dependencies
 //==============================================================================
 
-var Q         = require('q');
 var express   = require('express');
 var ViewModel = require('view-models/index');
 
