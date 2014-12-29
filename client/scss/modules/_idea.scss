@@ -60,10 +60,7 @@
 }
 
 .idea__sub-heading {
-  font-size: 22px;
-  font-weight: 300;
-  white-space: nowrap;
-  margin-bottom: 15px;
+  @extend %content-section__copy-heading;
 }
 
 .idea__copy {

@@ -6,6 +6,23 @@
 
 .summary {
   @extend %content-section;
+  min-height: 381px;
+  padding-top: 291px;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -119px;
+    width: 546px;
+    background-size: 546px auto;
+    height: 381px;
+    background-image: url(images/content-section-backgrounds/summary-bg.png);
+  }
+}
+
+.summary__heading {
+  @extend %content-section__copy-heading;
 }
 
 .summary__copy {
