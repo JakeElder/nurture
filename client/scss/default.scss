@@ -15,6 +15,7 @@
 // ----
 // Independent reusable blocks from which modules build upon
 @import 'base/colors';
+@import 'base/scaffolding';
 @import 'base/typography';
 @import 'base/ui-elements';
 @import 'base/vector-font';
@@ -24,6 +25,8 @@
 // --------
 // Abstract styles to be implemented by modules. Make use of base styles
 @import 'abstract/boxes';
+@import 'abstract/buttons';
+@import 'abstract/content-section';
 @import 'abstract/logos';
 
 
@@ -32,6 +35,9 @@
 // Visual modules. Should not depend upon each other. Common code should be
 // abstracted in to base scss
 @import 'modules/application-frame';
+@import 'modules/idea';
+@import 'modules/introduction';
+@import 'modules/summary';
 @import 'modules/site-header';
 
 
@@ -50,4 +56,6 @@ body {
   @extend .index-layout;
   @extend .application-frame;
 }
+
+.terms-and-conditions { display: none; }
 

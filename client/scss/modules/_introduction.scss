@@ -1,0 +1,38 @@
+/**
+ * Introduction
+ * ------------
+ * The first content section
+ */
+
+.introduction {
+  @extend %content-section;
+  background-image: url(images/content-section-backgrounds/arrow-bg-first.png);
+  background-size: 243px;
+  background-position: 47px 0;
+  min-height: 352px;
+  padding-top: 60px;
+}
+
+.introduction__heading {
+  @include hide-text;
+  @extend .ui-element;
+  @extend .ui-element-text-4-ideas-to-boost-your-business;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 105px;
+}
+
+.introduction__copy,
+.introduction__goad {
+  margin-right: 50px;
+}
+
+.introduction__copy {
+  @extend %content-section__copy;
+  margin-bottom: 16px;
+}
+
+.introduction__goad {
+  color: $school-bus-yellow;
+}
+

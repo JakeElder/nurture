@@ -1,0 +1,30 @@
+/**
+ * Buttons
+ * -------
+ */
+
+%button {
+  @include vector(chevron-right, after);
+  font-size: 17px;
+  font-weight: 300;
+  height: 32px;
+  line-height: 32px;
+  text-decoration: none;
+  color: #fff;
+  padding-left: 15px;
+  padding-right: 15px;
+  white-space: nowrap;
+  border-radius: 4px;
+  &:after {
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    font-size: 12px;
+    padding-left: 10px;
+  }
+}
+
+%orange-button { @extend %button; background-color: $blaze-orange; }
+%radical-red-button { @extend %button; background-color: $radical-red; }
+%malibu-button { @extend %button; background-color: $malibu; }
+%robins-egg-blue-button { @extend %button; background-color: $robins-egg-blue; }

@@ -1,6 +1,8 @@
 section.idea(data-cid=idea.cID)
-  h2.idea__heading Idea #{idea.number}
-  h3.idea__sub-heading= idea.heading
-  div.idea__body= idea.body
-  a.idea__cta(href=idea.ctaLink)= idea.ctaLabel
+  header.idea__header
+    h2.idea__heading Idea #{idea.number}
+  div.idea__body
+    h3.idea__sub-heading= idea.heading
+    div.idea__copy= idea.body
+    a.idea__cta(href=idea.ctaLink)= idea.ctaLabel
 

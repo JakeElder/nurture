@@ -1,0 +1,14 @@
+/**
+ * Summary
+ * ------------
+ * The summary content section
+ */
+
+.summary {
+  @extend %content-section;
+}
+
+.summary__copy {
+  @extend %content-section__copy;
+}
+
