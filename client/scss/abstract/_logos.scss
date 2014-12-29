@@ -8,3 +8,7 @@
   color: $green-vogue;
 }
 
+%telefonica-logo {
+  @extend .vector-telefonica;
+  color: $pickled-bluewood;
+}

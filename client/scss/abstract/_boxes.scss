@@ -10,6 +10,8 @@
 
 %alabaster-fade-box {
   @include background-image(linear-gradient(top, $gallery 25%, $alabaster 100%));
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 %jelly-bean-box {

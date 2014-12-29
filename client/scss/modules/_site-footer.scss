@@ -1,0 +1,44 @@
+/**
+ * Site footer
+ * -----------
+ * The site wide application footer
+ */
+
+.site-footer {
+  @extend %alabaster-fade-box;
+  color: $green-vogue;
+  font-size: 10px;
+}
+
+.site-footer__container {
+  @extend %container;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: hidden;
+}
+
+.site-footer__tnc-privacy {
+  float: left;
+  line-height: 27px;
+}
+
+.site-footer__logo-copyright {
+  float: right;
+  text-align: right;
+}
+
+.site-footer__telefonica-logo {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.site-footer__copyright-copy {
+  font-size: 7px;
+}
+
+.site-footer__telefonica-logo {
+  @extend %telefonica-logo;
+}
+
