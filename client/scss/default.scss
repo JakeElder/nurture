@@ -35,10 +35,19 @@
 @import 'modules/site-header';
 
 
+// Layouts
+// -------
+// Responsible for applying implementation specific
+// margin/paddings/structure to modules without coupling those values to the
+// module
+@import 'layouts/index';
+
+
 // Shorthand applications
 // ----------------------
 // Attach basic styles to the DOM
 body {
+  @extend .index-layout;
   @extend .application-frame;
 }
 
