@@ -10,7 +10,7 @@ var Model = require('parse/model');
 //==============================================================================
 
 var Setting = Model.create('settings');
-Setting.mixin(require('parse/mixins/key-value'));
+Setting.mixin(require('parse/mixins/key-value')());
 
 
 //==============================================================================
