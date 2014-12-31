@@ -6,6 +6,7 @@
 
 %idea {
   @extend %content-section;
+  padding-top: 120px;
 }
 
 %odd-idea {
@@ -14,7 +15,6 @@
   background-size: 252px;
   background-position: 50px 0;
   min-height: 492px;
-  padding-top: 132px;
 }
 
 %even-idea {
@@ -23,13 +23,13 @@
   background-size: 261px;
   background-position: 20px 0;
   min-height: 472px;
-  padding-top: 128px;
 }
 
 .idea:nth-of-type(odd) { @extend %odd-idea; }
 .idea:nth-of-type(even) { @extend %even-idea; }
 
 .idea__header {
+  text-align: center;
   %odd-idea & { height: 202px; }
   %even-idea & { height: 215px; }
 }
@@ -71,11 +71,27 @@
 
 // Idea specific styles
 .idea[data-cid=APPS] {
-  .idea__cta { @extend %orange-button; }
+  .idea__cta { @extend %radical-red-button; }
+  .idea__image {
+    position: relative;
+    width: 160px;
+  }
+  &:nth-of-type(odd) {
+    .idea__image {
+      left: 8px;
+      top: 12px;
+    }
+  }
+  &:nth-of-type(even) {
+    .idea__image {
+      left: -9px;
+      top: 20px;
+    }
+  }
 }
 
 .idea[data-cid=PUO] {
-  .idea__cta { @extend %radical-red-button; }
+  .idea__cta { @extend %orange-button; }
 }
 
 .idea[data-cid=MY_O2_B] {

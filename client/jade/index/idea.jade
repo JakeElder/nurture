@@ -1,6 +1,7 @@
 section.idea(data-cid=idea.cID)
   header.idea__header
     h2.idea__heading Idea #{idea.number}
+    img.idea__image(src='images/content/' + idea.cID + '.png')
   div.idea__body
     h3.idea__sub-heading= idea.heading
     div.idea__copy= idea.body

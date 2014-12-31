@@ -6,18 +6,41 @@
 
 .summary {
   @extend %content-section;
-  min-height: 381px;
-  padding-top: 291px;
+}
+
+.summary__header {
+  height: 300px;
   position: relative;
   &:before {
     content: '';
     position: absolute;
     top: 0;
-    left: -119px;
+    left: -151px;
     width: 546px;
     background-size: 546px auto;
     height: 381px;
     background-image: url(images/content-section-backgrounds/summary-bg.png);
+  }
+}
+
+.summary__idea-cta {
+  position: absolute;
+
+  &:nth-child(1) { top: 98px; left: 67px; }
+  &:nth-child(2) { top: 103px; left: 186px; }
+  &:nth-child(3) { top: 205px; left: 73px; }
+  &:nth-child(4) { top: 212px; left: 189px; }
+
+  img {
+    width: 100%;
+    position: relative;
+    top: -50%;
+    left: -50%;
+  }
+
+  &[data-cid=APPS] {
+    width: 87px;
+    height: 49px;
   }
 }
 
