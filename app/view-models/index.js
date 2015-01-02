@@ -5,9 +5,11 @@
 var Q                 = require('q');
 var _                 = require('lodash');
 var querystring       = require('querystring');
+var marked            = require('marked');
 
 var ContentFragment   = require('models/content-fragment');
 var Idea              = require('models/idea');
+var IdeaPresenter     = require('presenters/idea');
 var Setting           = require('models/setting');
 var DispositionHelper = require('helpers/disposition');
 
@@ -72,7 +74,7 @@ Object.defineProperty(proto, 'introduction', {
     'use strict';
     return {
       heading: this._contentFragments.INTRODUCTION_HEADING,
-      copy: this._contentFragments.INTRODUCTION_COPY,
+      copy: marked(this._contentFragments.INTRODUCTION_COPY),
       goad: this._contentFragments.INTRODUCTION_GOAD
     };
   }
@@ -93,6 +95,8 @@ Object.defineProperty(proto, 'ideas', {
       // in the disposition helper
       return viewModel._ideas.filter(function(idea) {
         return viewModel._disposition[section].indexOf(idea.cID) !== -1;
+      }).map(function(idea) {
+        return new IdeaPresenter(idea);
       }).sort(function(a, b) {
         var aIndex = viewModel._disposition[section].indexOf(a.cID);
         var bIndex = viewModel._disposition[section].indexOf(b.cID);

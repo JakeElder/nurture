@@ -22,5 +22,10 @@
 %content-section__copy {
   font-size: 11px;
   line-height: 1.6;
+
+  p {
+    margin-bottom: 10px;
+    &:last-child { margin-bottom: 0; }
+  }
 }
 

@@ -4,6 +4,6 @@ section.idea(data-cid=idea.cID, data-number=idea.number)
     img.idea__image(src='images/content/' + idea.cID + '.png')
   div.idea__body
     h3.idea__sub-heading= idea.heading
-    div.idea__copy= idea.body
+    div.idea__copy!= idea.body
     a.idea__cta(href=idea.ctaLink)= idea.ctaLabel
 

@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_PATH=./app:./app/adapters:./config:./lib/parse NODE_ENV=development gulp",
-    "test": "NODE_PATH=./app:./app/adapters:./config:./lib/parse NODE_ENV=test mocha $(find test/unit test/integration -name \"*.js\")"
+    "start": "NODE_PATH=./app:./app/adapters:./config:./lib/parse:./lib NODE_ENV=development gulp",
+    "test": "NODE_PATH=./app:./app/adapters:./config:./lib/parse:./lib NODE_ENV=test mocha $(find test/unit test/integration -name \"*.js\")"
   },
   "dependencies": {
     "browserify-middleware": "^4.1.0",
