@@ -54,6 +54,10 @@
   %even-idea & { position: relative; right: 7px; }
 }
 
+.idea__image {
+  position: relative;
+}
+
 .idea__body {
   %odd-idea & { margin-right: 53px; }
   %even-idea & { margin-left: 55px; }
@@ -68,37 +72,26 @@
   margin-bottom: 15px;
 }
 
+.idea__cta {
+  @extend %button;
+}
+
 
 // Idea specific styles
-.idea[data-cid=APPS] {
-  .idea__cta { @extend %radical-red-button; }
-  .idea__image {
-    position: relative;
-    width: 160px;
-  }
-  &:nth-of-type(odd) {
-    .idea__image {
-      left: 8px;
-      top: 12px;
-    }
-  }
-  &:nth-of-type(even) {
-    .idea__image {
-      left: -9px;
-      top: 20px;
-    }
-  }
-}
 
-.idea[data-cid=PUO] {
-  .idea__cta { @extend %orange-button; }
-}
+// Upsell
 
-.idea[data-cid=MY_O2_B] {
-  .idea__cta { @extend %malibu-button; }
-}
+// .idea[data-cid=PUO] {
 
-.idea[data-cid=BLOG] {
-  .idea__cta { @extend %robins-egg-blue-button; }
-}
+// .idea[data-cid=PUO] {
+//   .idea__cta { @extend %malibu-button; }
+// }
+
+
+// .idea[data-cid=TU_GO] {}
+
+
+// .idea[data-cid=BLOG] {
+//   .idea__cta { @extend %robins-egg-blue-button; }
+// }
 

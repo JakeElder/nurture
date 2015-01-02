@@ -1,0 +1,61 @@
+/**
+ * Idea index
+ * ----------
+ * This defines mixins that can be used to apply Idea specific styles to idea
+ * modules. Also includes all idea specific styles, and their position
+ * based variants.
+ */
+
+@mixin idea($cid) {
+  [data-cid=#{$cid}] {
+    @content;
+  }
+}
+
+@mixin when-odd() {
+  &[data-number="1"],
+  &[data-number="3"] {
+    @content;
+  }
+}
+
+@mixin when-even() {
+  &[data-number="2"],
+  &[data-number="4"] {
+    @content;
+  }
+}
+
+@mixin cta-color($color) {
+  .idea__cta {
+    background-color: $color;
+  }
+}
+
+@mixin summary-image-dimensions($width, $height) {
+  &.summary__idea-cta {
+    width: #{$width}px;
+    height: #{$height}px;
+  }
+}
+
+
+
+// Upsell ideas
+@import 'upsell/apps';
+@import 'upsell/tab';
+@import 'upsell/puo';
+@import 'upsell/bb-l';
+
+// Why O2 ideas
+@import 'why-o2/my-o2-b';
+@import 'why-o2/tu-go';
+@import 'why-o2/priority';
+@import 'why-o2/travel';
+@import 'why-o2/wifi';
+@import 'why-o2/guru';
+@import 'why-o2/blog';
+@import 'why-o2/enews';
+@import 'why-o2/4g';
+@import 'why-o2/roam';
+

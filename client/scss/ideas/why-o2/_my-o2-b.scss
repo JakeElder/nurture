@@ -1,0 +1,20 @@
+@include idea(MY_O2_B) {
+  .idea__image {
+    width: 119px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 9px;
+      top: 24px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 23px;
+    }
+  }
+  @include cta-color($blaze-orange);
+  @include summary-image-dimensions(76, 49);
+}
+

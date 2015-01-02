@@ -43,7 +43,7 @@ describe('ParseModel key-value mixin', function() {
     });
 
     describe('with markdown fields passed', function() {
-      it('should call the marked function on keys specified', function() {
+      it('should call the markdown function on keys specified', function() {
         var markedStub = sinon.stub();
         var kvMixin = rewire('parse/mixins/key-value');
         var restoreMarked = kvMixin.__set__('marked', markedStub);

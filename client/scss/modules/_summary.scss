@@ -29,18 +29,13 @@
   &:nth-child(1) { top: 98px; left: 67px; }
   &:nth-child(2) { top: 103px; left: 186px; }
   &:nth-child(3) { top: 205px; left: 73px; }
-  &:nth-child(4) { top: 212px; left: 189px; }
+  &:nth-child(4) { top: 215px; left: 191px; }
 
   img {
     width: 100%;
     position: relative;
     top: -50%;
     left: -50%;
-  }
-
-  &[data-cid=APPS] {
-    width: 87px;
-    height: 49px;
   }
 }
 

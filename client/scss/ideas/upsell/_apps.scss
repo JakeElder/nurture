@@ -1,0 +1,19 @@
+@include idea(APPS) {
+  @include when-odd {
+    .idea__image {
+      width: 140px;
+      left: 8px;
+      top: 18px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      width: 160px;
+      left: -9px;
+      top: 20px;
+    }
+  }
+  @include cta-color($radical-red);
+  @include summary-image-dimensions(85, 49);
+}
+
