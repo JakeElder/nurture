@@ -1,0 +1,20 @@
+@include idea(TU_GO) {
+  .idea__image {
+    width: 88px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 8px;
+      top: 16px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 23px;
+    }
+  }
+  @include cta-color($malibu);
+  @include summary-image-dimensions(50, 50);
+}
+

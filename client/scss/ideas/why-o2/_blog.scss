@@ -1,0 +1,21 @@
+@include idea(BLOG) {
+  .idea__image {
+    width: 146px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 8px;
+      top: 16px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 23px;
+    }
+  }
+  @include cta-color($robins-egg-blue);
+  @include summary-image-dimensions(80, 36);
+}
+
+
