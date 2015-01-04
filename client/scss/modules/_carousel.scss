@@ -1,0 +1,12 @@
+/**
+ * Carousel
+ * --------
+ */
+
+.carousel__entry {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+

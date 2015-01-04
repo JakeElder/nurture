@@ -25,3 +25,7 @@
   }
 }
 
+%robins-egg-blue-button {
+  @extend %button;
+  background-color: $robins-egg-blue;
+}

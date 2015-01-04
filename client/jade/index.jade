@@ -1,8 +1,14 @@
 extends layouts/default
 
 block content
-  include index/introduction
-  include index/upsell-ideas
-  include index/why-o2-ideas
-  include index/summary
-  include index/terms-and-conditions
+  .carousel
+    include layout/header
+    .carousel__entry.active#content
+      include index/introduction
+      include index/upsell-ideas
+      include index/why-o2-ideas
+      include index/summary
+      include layout/footer
+    .carousel__entry#terms-and-conditions
+      include index/terms-and-conditions
+

@@ -98,7 +98,7 @@ gulp.task('complexity', function() {
 });
 
 gulp.task('jshint', function() {
-  return gulp.src('{app,lib,config}/**/*.js')
+  return gulp.src('{app,lib,config,client/js,test}/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter(require('jshint-stylish')));
 });

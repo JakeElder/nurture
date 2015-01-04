@@ -7,8 +7,8 @@
 
 // Vendor
 // ------
-@import 'reset';
 @import 'bourbon';
+@import 'reset';
 
 
 // Base
@@ -35,11 +35,13 @@
 // Visual modules. Should not depend upon each other. Common code should be
 // abstracted in to base scss
 @import 'modules/application-frame';
+@import 'modules/carousel';
 @import 'modules/idea';
 @import 'modules/introduction';
-@import 'modules/summary';
 @import 'modules/site-footer';
 @import 'modules/site-header';
+@import 'modules/summary';
+@import 'modules/terms-and-conditions';
 
 
 // Layouts
@@ -60,9 +62,7 @@
 // ----------------------
 // Attach basic styles to the DOM
 body {
-  @extend .index-layout;
   @extend .application-frame;
+  @extend .index-layout;
 }
-
-.terms-and-conditions { display: none; }
 

@@ -1,0 +1,25 @@
+/**
+ * Terms and conditions
+ * --------------------
+ */
+
+.terms-and-conditions__container {
+  @extend %container;
+}
+
+.terms-and-conditions__heading {
+  font-size: 22px;
+  font-weight: 300;
+  margin-bottom: 23px;
+}
+
+.terms-and-conditions__copy {
+  @extend %body-copy;
+  margin-bottom: 30px;
+}
+
+.terms-and-conditions__back-link {
+  @extend %robins-egg-blue-button;
+  cursor: pointer;
+}
+

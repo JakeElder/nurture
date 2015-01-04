@@ -133,7 +133,7 @@ Object.defineProperty(proto, 'termsAndConditions', {
     'use strict';
     return {
       heading: this._contentFragments.TERMS_AND_CONDITIONS_HEADING,
-      copy: this._contentFragments.TERMS_AND_CONDITIONS_COPY
+      copy: marked(this._contentFragments.TERMS_AND_CONDITIONS_COPY)
     };
   }
 });
