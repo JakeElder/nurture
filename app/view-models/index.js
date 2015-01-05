@@ -72,9 +72,15 @@ Object.defineProperty(proto, 'introduction', {
   enumerable: true,
   get: function() {
     'use strict';
+
+    // Get the right copy based on LIFE_CYCLE and CALL_STATUS params
+    var copyKey = 'INTRODUCTION_COPY_' +
+      this._disposition.lifeCycle + '_' +
+      this._disposition.callStatus;
+
     return {
       heading: this._contentFragments.INTRODUCTION_HEADING,
-      copy: marked(this._contentFragments.INTRODUCTION_COPY),
+      copy: marked(this._contentFragments[copyKey]),
       goad: this._contentFragments.INTRODUCTION_GOAD
     };
   }

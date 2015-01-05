@@ -23,6 +23,7 @@ router.get('/', function(req, res, next) {
     try {
       res.render('index', model);
     } catch (err) {
+      console.log(err.stack);
       next(err);
     }
   }, function(err) {
