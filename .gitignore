@@ -4,4 +4,5 @@ client/scss/base/_ui-elements.scss
 client/scss/base/_vector-font.scss
 public/default.css
 
-.elasticbeanstalk
+.elasticbeanstalk/
+
