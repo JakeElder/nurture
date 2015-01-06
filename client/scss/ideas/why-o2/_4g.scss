@@ -1,0 +1,21 @@
+@include idea(4G) {
+  .idea__image {
+    width: 156px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 8px;
+      top: 18px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 30px;
+    }
+  }
+  @include summary-image-dimensions(100, 63);
+}
+
+
+

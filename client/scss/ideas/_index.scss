@@ -7,7 +7,7 @@
  */
 
 @mixin idea($cid) {
-  [data-cid=#{$cid}] {
+  [data-cid="#{$cid}"] {
     @content;
   }
 }
