@@ -1,0 +1,23 @@
+@include idea(WIFI) {
+  .idea__image {
+    width: 76px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 10px;
+      top: 13px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 20px;
+    }
+  }
+  @include summary-image-dimensions(48, 70);
+}
+
+
+
+
+
