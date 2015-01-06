@@ -1,0 +1,22 @@
+@include idea(TRAVEL) {
+  .idea__image {
+    width: 110px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 11px;
+      top: 13px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -6px;
+      top: 19px;
+    }
+  }
+  @include summary-image-dimensions(64, 70);
+}
+
+
+
+
