@@ -1,0 +1,19 @@
+@include idea(ENEWS) {
+  .idea__image {
+    width: 136px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 7px;
+      top: 22px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 31px;
+    }
+  }
+  @include summary-image-dimensions(71, 31);
+}
+
