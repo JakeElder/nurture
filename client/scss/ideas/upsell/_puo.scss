@@ -1,0 +1,19 @@
+@include idea(PUO) {
+  .idea__image {
+    width: 136px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 7px;
+      top: 19px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 30px;
+    }
+  }
+  @include summary-image-dimensions(76, 45);
+}
+
