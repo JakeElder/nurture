@@ -1,0 +1,20 @@
+@include idea(TAB) {
+  .idea__image {
+    width: 149px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 9px;
+      top: 21px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -11px;
+      top: 29px;
+    }
+  }
+  @include summary-image-dimensions(85, 47);
+}
+
+
