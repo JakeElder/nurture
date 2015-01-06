@@ -1,0 +1,24 @@
+@include idea(GURU) {
+  .idea__image {
+    width: 138px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 11px;
+      top: 13px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 22px;
+    }
+  }
+  @include summary-image-dimensions(70, 47);
+}
+
+
+
+
+
+
