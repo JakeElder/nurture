@@ -72,7 +72,8 @@
   margin-bottom: 15px;
 }
 
-.idea__cta {
-  @extend %button;
-}
+.idea[data-number="1"] .idea__cta { @extend %blaze-orange-button; }
+.idea[data-number="2"] .idea__cta { @extend %radical-red-button; }
+.idea[data-number="3"] .idea__cta { @extend %malibu-button; }
+.idea[data-number="4"] .idea__cta { @extend %robins-egg-blue-button; }
 

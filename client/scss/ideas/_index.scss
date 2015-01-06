@@ -13,22 +13,16 @@
 }
 
 @mixin when-odd() {
-  &[data-number="1"],
-  &[data-number="3"] {
+  &.idea[data-number="1"],
+  &.idea[data-number="3"] {
     @content;
   }
 }
 
 @mixin when-even() {
-  &[data-number="2"],
-  &[data-number="4"] {
+  &.idea[data-number="2"],
+  &.idea[data-number="4"] {
     @content;
-  }
-}
-
-@mixin cta-color($color) {
-  .idea__cta {
-    background-color: $color;
   }
 }
 

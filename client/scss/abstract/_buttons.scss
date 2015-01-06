@@ -15,7 +15,6 @@
   padding-right: 15px;
   white-space: nowrap;
   border-radius: 4px;
-  background-color: $black;
   &:after {
     display: inline-block;
     height: 100%;
@@ -25,7 +24,8 @@
   }
 }
 
-%robins-egg-blue-button {
-  @extend %button;
-  background-color: $robins-egg-blue;
-}
+%blaze-orange-button { @extend %button; background-color: $blaze-orange; }
+%malibu-button { @extend %button; background-color: $malibu; }
+%radical-red-button { @extend %button; background-color: $radical-red; }
+%robins-egg-blue-button { @extend %button; background-color: $robins-egg-blue; }
+
