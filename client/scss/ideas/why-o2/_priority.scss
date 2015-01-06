@@ -1,0 +1,21 @@
+@include idea(PRIORITY) {
+  .idea__image {
+    width: 104px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 2px;
+      top: 11px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -10px;
+      top: 16px;
+    }
+  }
+  @include summary-image-dimensions(64, 70);
+}
+
+
+
