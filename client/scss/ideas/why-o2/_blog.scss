@@ -5,13 +5,13 @@
   @include when-odd {
     .idea__image {
       left: 8px;
-      top: 16px;
+      top: 25px;
     }
   }
   @include when-even {
     .idea__image {
       left: -9px;
-      top: 23px;
+      top: 30px;
     }
   }
   @include summary-image-dimensions(80, 36);
