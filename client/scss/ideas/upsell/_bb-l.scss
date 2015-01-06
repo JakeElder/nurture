@@ -1,0 +1,19 @@
+@include idea(BB_L) {
+  .idea__image {
+    width: 136px;
+  }
+  @include when-odd {
+    .idea__image {
+      left: 7px;
+      top: -6px;
+    }
+  }
+  @include when-even {
+    .idea__image {
+      left: -9px;
+      top: 2px;
+    }
+  }
+  @include summary-image-dimensions(90, 86);
+}
+
