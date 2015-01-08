@@ -9,6 +9,7 @@
 }
 
 .summary__header {
+  position: relative;
 }
 
 .summary__bg {
@@ -36,10 +37,12 @@
 
 .summary__heading {
   @extend %content-section__copy-heading;
+  position: relative;
   margin-top: 117%;
 }
 
 .summary__copy {
   @extend %content-section__copy;
+  position: relative;
 }
 

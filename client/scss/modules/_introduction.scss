@@ -8,6 +8,14 @@
   @extend %content-section;
 }
 
+.introduction__bg {
+  @extend %content-section__bg;
+}
+
+.introduction__content {
+  @extend %content-section__content;
+}
+
 .introduction__heading {
   font-size: 0;
   color: transparent;
@@ -31,9 +39,5 @@
 .introduction__goad {
   font-weight: 300;
   color: $school-bus-yellow;
-}
-
-.introduction__bg {
-  @extend %content-section__bg;
 }
 

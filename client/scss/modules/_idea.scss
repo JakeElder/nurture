@@ -4,7 +4,8 @@
  * A content section outlining an idea
  */
 
-.idea {
+.odd-idea,
+.even-idea {
   @extend %content-section;
 }
 
@@ -21,6 +22,7 @@
 }
 
 .idea__body {
+  position: relative;
   margin-top: 133%;
 }
 
@@ -58,6 +60,9 @@
   .idea__bg {
     left: 8%;
   }
+  .idea__header {
+    margin-bottom: 30%;
+  }
   .idea__heading {
     position: relative;
     left: 3.8%;
@@ -70,6 +75,9 @@
 .even-idea {
   .idea__bg {
     left: -2%;
+  }
+  .idea__header {
+    margin-bottom: 30%;
   }
   .idea__heading {
     position: relative;

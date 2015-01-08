@@ -13,6 +13,17 @@
   }
 }
 
+%content-section__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+%content-section__content {
+  position: relative;
+}
+
 %content-section__copy-heading {
   font-size: 22px;
   font-weight: 300;
@@ -22,12 +33,5 @@
 
 %content-section__copy {
   @extend %body-copy;
-}
-
-%content-section__bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
 }
 
