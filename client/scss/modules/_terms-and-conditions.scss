@@ -4,7 +4,7 @@
  */
 
 .terms-and-conditions__container {
-  @extend %container;
+  @extend .container;
 }
 
 .terms-and-conditions__heading {
