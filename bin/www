@@ -5,5 +5,9 @@ var app = require('../app');
 app.set('port', process.env.PORT || 3000);
 
 var server = app.listen(app.get('port'), function() {
-  process.send({ started: true })
+  if (process.env.NODE_ENV === 'development') {
+    process.send({ started: true })
+  } else {
+    console.log('Server started on port ' + app.get('port'));
+  }
 });
