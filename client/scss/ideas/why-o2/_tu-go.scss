@@ -1,17 +1,17 @@
 @include idea(TU_GO) {
   .idea__image {
-    width: 88px;
+    width: 34.3%;
   }
   @include when-odd {
     .idea__image {
-      left: 8px;
-      top: 16px;
+      left: 3%;
+      margin-top: 6.25%;
     }
   }
   @include when-even {
     .idea__image {
-      left: -9px;
-      top: 23px;
+      left: -3%;
+      margin-top: 9%;
     }
   }
   @include summary-image-dimensions(50, 50);

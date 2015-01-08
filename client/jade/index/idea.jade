@@ -1,7 +1,8 @@
-section.idea(data-cid=idea.cID, data-number=idea.number)
+section(class=idea.className, data-cid=idea.cID, data-number=idea.number)
+  img.idea__bg(src=idea.backgroundImageSrc)
   header.idea__header
     h2.idea__heading Idea #{idea.number}
-    img.idea__image(src='images/content/' + idea.cID + '.png')
+    img.idea__image(src=idea.imageSrc)
   div.idea__body
     h3.idea__sub-heading= idea.heading
     div.idea__copy!= idea.body

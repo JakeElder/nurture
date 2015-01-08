@@ -4,34 +4,24 @@
  * A content section outlining an idea
  */
 
-%idea {
+.idea {
   @extend %content-section;
-  padding-top: 120px;
 }
 
-%odd-idea {
-  @extend %idea;
-  background-image: url(images/content-section-backgrounds/small/arrow-bg-to-br.png);
-  background-size: 252px;
-  background-position: 50px 0;
-  min-height: 492px;
+.idea__bg {
+  @extend %content-section__bg;
 }
-
-%even-idea {
-  @extend %idea;
-  background-image: url(images/content-section-backgrounds/small/arrow-bg-to-bl.png);
-  background-size: 261px;
-  background-position: 20px 0;
-  min-height: 472px;
-}
-
-.idea:nth-of-type(odd) { @extend %odd-idea; }
-.idea:nth-of-type(even) { @extend %even-idea; }
 
 .idea__header {
   text-align: center;
-  %odd-idea & { height: 202px; }
-  %even-idea & { height: 215px; }
+  margin-top: 48.5%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.idea__body {
+  margin-top: 133%;
 }
 
 .idea__heading {
@@ -49,18 +39,10 @@
     position: relative;
     top: 5px;
   }
-
-  %odd-idea & { position: relative; left: 10px; }
-  %even-idea & { position: relative; right: 7px; }
 }
 
 .idea__image {
   position: relative;
-}
-
-.idea__body {
-  %odd-idea & { margin-right: 50px; }
-  %even-idea & { margin-left: 55px; }
 }
 
 .idea__sub-heading {
@@ -70,6 +52,32 @@
 .idea__copy {
   @extend %content-section__copy;
   margin-bottom: 15px;
+}
+
+.odd-idea {
+  .idea__bg {
+    left: 8%;
+  }
+  .idea__heading {
+    position: relative;
+    left: 3.8%;
+  }
+  .idea__body {
+    margin-right: 20%;
+  }
+}
+
+.even-idea {
+  .idea__bg {
+    left: -2%;
+  }
+  .idea__heading {
+    position: relative;
+    right: 7px;
+  }
+  .idea__body {
+    margin-left: 55px;
+  }
 }
 
 .idea[data-number="1"] .idea__cta { @extend %blaze-orange-button; }

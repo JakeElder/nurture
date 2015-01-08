@@ -6,25 +6,21 @@
 
 .introduction {
   @extend %content-section;
-  background-image: url(images/content-section-backgrounds/small/arrow-bg-first.png);
-  background-size: 243px;
-  background-position: 47px 0;
-  min-height: 352px;
-  padding-top: 60px;
 }
 
 .introduction__heading {
-  @include hide-text;
-  @extend .ui-element;
-  @extend .ui-element-text-4-ideas-to-boost-your-business;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 105px;
+  font-size: 0;
+  color: transparent;
+  margin: 24% 20% 40% 14%;
+}
+
+.introduction__heading-image {
+  width: 100%;
 }
 
 .introduction__copy,
 .introduction__goad {
-  margin-right: 50px;
+  margin-right: 16%;
 }
 
 .introduction__copy {
@@ -35,5 +31,9 @@
 .introduction__goad {
   font-weight: 300;
   color: $school-bus-yellow;
+}
+
+.introduction__bg {
+  @extend %content-section__bg;
 }
 

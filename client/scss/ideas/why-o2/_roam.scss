@@ -1,17 +1,17 @@
 @include idea(ROAM) {
   .idea__image {
-    width: 116px;
+    width: 44%;
   }
   @include when-odd {
     .idea__image {
-      left: 11px;
-      top: 19px;
+      left: 3.7%;
+      margin-top: 7%;
     }
   }
   @include when-even {
     .idea__image {
-      left: -9px;
-      top: 30px;
+      left: -2.5%;
+      margin-top: 11%;
     }
   }
   @include summary-image-dimensions(76, 51);

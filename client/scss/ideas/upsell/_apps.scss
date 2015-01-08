@@ -1,16 +1,16 @@
 @include idea(APPS) {
   @include when-odd {
     .idea__image {
-      width: 140px;
-      left: 8px;
-      top: 18px;
+      width: 55%;
+      left: 4.6%;
+      margin-top: 7%;
     }
   }
   @include when-even {
     .idea__image {
-      width: 160px;
-      left: -13px;
-      top: 20px;
+      width: 58%;
+      left: -3%;
+      margin-top: 8%;
     }
   }
   @include summary-image-dimensions(85, 49);

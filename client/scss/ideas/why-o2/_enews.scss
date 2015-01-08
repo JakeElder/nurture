@@ -1,17 +1,17 @@
 @include idea(ENEWS) {
   .idea__image {
-    width: 136px;
+    width: 53%;
   }
   @include when-odd {
     .idea__image {
-      left: 7px;
-      top: 22px;
+      left: 3.5%;
+      margin-top: 8%;
     }
   }
   @include when-even {
     .idea__image {
-      left: -9px;
-      top: 31px;
+      left: -3.2%;
+      margin-top: 12%;
     }
   }
   @include summary-image-dimensions(71, 31);

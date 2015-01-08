@@ -1,17 +1,17 @@
 @include idea(WIFI) {
   .idea__image {
-    width: 76px;
+    width: 30%;
   }
   @include when-odd {
     .idea__image {
-      left: 10px;
-      top: 13px;
+      left: 3.1%;
+      margin-top: 5%;
     }
   }
   @include when-even {
     .idea__image {
-      left: -9px;
-      top: 20px;
+      left: -3%;
+      margin-top: 6%;
     }
   }
   @include summary-image-dimensions(48, 70);

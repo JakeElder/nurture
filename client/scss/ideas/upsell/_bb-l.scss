@@ -1,17 +1,17 @@
 @include idea(BB_L) {
   .idea__image {
-    width: 136px;
+    width: 53.125%;
   }
   @include when-odd {
     .idea__image {
-      left: 7px;
-      top: -6px;
+      left: 3%;
+      margin-top: -1%;
     }
   }
   @include when-even {
     .idea__image {
-      left: -9px;
-      top: 2px;
+      left: -4%;
+      margin-top: 1%;
     }
   }
   @include summary-image-dimensions(90, 86);

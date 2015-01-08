@@ -13,9 +13,8 @@
 
 // Base
 // ----
-// Independent reusable blocks from which modules build upon
+// Configuration, mixins, generated code, utilties
 @import 'base/colors';
-@import 'base/scaffolding';
 @import 'base/typography';
 @import 'base/ui-elements';
 @import 'base/vector-font';
@@ -23,11 +22,12 @@
 
 // Abstract
 // --------
-// Abstract styles to be implemented by modules. Make use of base styles
+// Abstract styles to be implemented by modules. Make use of base modules
 @import 'abstract/boxes';
 @import 'abstract/buttons';
 @import 'abstract/content-section';
 @import 'abstract/logos';
+@import 'abstract/scaffolding';
 
 
 // Modules
@@ -61,6 +61,10 @@
 // Shorthand applications
 // ----------------------
 // Attach basic styles to the DOM
+html,
+body {
+  overflow-x: hidden;
+}
 body {
   @extend .application-frame;
   @extend .index-layout;

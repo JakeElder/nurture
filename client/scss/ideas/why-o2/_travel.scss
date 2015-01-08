@@ -1,17 +1,17 @@
 @include idea(TRAVEL) {
   .idea__image {
-    width: 110px;
+    width: 40%;
   }
   @include when-odd {
     .idea__image {
-      left: 11px;
-      top: 13px;
+      left: 5%;
+      margin-top: 5%;
     }
   }
   @include when-even {
     .idea__image {
-      left: -6px;
-      top: 19px;
+      left: -1.6%;
+      margin-top: 8%;
     }
   }
   @include summary-image-dimensions(64, 70);

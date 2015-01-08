@@ -2,6 +2,7 @@
 // Dependencies
 //==============================================================================
 
+var _        = require('lodash');
 var Carousel = require('carousel');
 
 
@@ -32,4 +33,25 @@ window.app = {};
     app.carousel.show(content);
   });
 })(window.app);
+
+
+//==============================================================================
+// Ensure content sections are tall enough to show their backgrounds
+//==============================================================================
+
+(function() {
+  'use strict';
+
+  var $contentSections = $('.introduction, .idea, .summary');
+  var $BGs             = $('.introduction__bg, .idea__bg, .summary__bg');
+
+  function adjustMinHeight() {
+    $contentSections.each(function(index) {
+      $(this).css('min-height', $BGs.eq(index).height());
+    });
+  }
+
+  adjustMinHeight();
+  $(window).resize(adjustMinHeight);
+})();
 

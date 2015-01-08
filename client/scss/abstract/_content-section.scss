@@ -5,11 +5,12 @@
  */
 
 %content-section {
-  @extend %container;
-  box-sizing: border-box;
-  padding-left: 32px;
-  padding-right: 32px;
   background-repeat: no-repeat;
+  position: relative;
+  &:before, &:after {
+    content: '';
+    display: table;
+  }
 }
 
 %content-section__copy-heading {
@@ -21,5 +22,12 @@
 
 %content-section__copy {
   @extend %body-copy;
+}
+
+%content-section__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 

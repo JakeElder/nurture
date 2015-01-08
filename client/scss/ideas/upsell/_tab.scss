@@ -1,17 +1,17 @@
 @include idea(TAB) {
   .idea__image {
-    width: 149px;
+    width: 58%;
   }
   @include when-odd {
     .idea__image {
-      left: 9px;
-      top: 21px;
+      left: 2.7%;
+      margin-top: 8.3%;
     }
   }
   @include when-even {
     .idea__image {
-      left: -11px;
-      top: 29px;
+      left: -3%;
+      margin-top: 10%;
     }
   }
   @include summary-image-dimensions(85, 47);
