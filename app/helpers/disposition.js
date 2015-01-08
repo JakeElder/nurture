@@ -13,10 +13,8 @@
  *    => 'E_LIFE'
  *   disposition.callStatus;
  *    => 'Y'
- *   disposition.upsell;
- *    => ['APPS', 'TAB']
- *   disposition.whyO2;
- *    => ['TU_GO', 'PRIORITY']
+ *   disposition.ideas;
+ *    => ['APPS', 'TAB', 'TU_GO', 'PRIORITY']
  * });
  *
  */
@@ -66,16 +64,11 @@ DispositionHelper.PROPERTIES = {
     possibleValues: ['Y', 'N'],
     default: 'N'
   },
-  upsell: {
-    key: 'U',
-    possibleValues: ['APPS', 'TAB', 'PUO', 'BB_L'],
-    default: ['APPS', 'PUO']
-  },
-  whyO2: {
-    key: 'WO',
-    possibleValues: ['MY_O2_B', 'TU_GO', 'PRIORITY', 'TRAVEL', 'WIFI', 'GURU',
-      'BLOG', 'ENEWS', '4G', 'ROAM'],
-    default: ['MY_O2_B', 'BLOG']
+  ideas: {
+    key: 'I',
+    possibleValues: ['APPS', 'TAB', 'PUO', 'BB_L', 'MY_O2_B', 'TU_GO',
+      'PRIORITY', 'TRAVEL', 'WIFI', 'GURU', 'BLOG', 'ENEWS', '4G', 'ROAM'],
+    default: ['APPS', 'PUO', 'MY_O2_B', 'BLOG']
   }
 };
 

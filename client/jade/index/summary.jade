@@ -1,10 +1,7 @@
 section.summary
   img.summary__bg(src='images/content-section-backgrounds/small/summary-bg.png')
   header.summary__header
-    each idea in ideas.upsell
-      a.summary__idea-cta(href=idea.ctaLink, data-cid=idea.cID)
-        img(src=idea.imageSrc)
-    each idea in ideas.whyO2
+    each idea in ideas
       a.summary__idea-cta(href=idea.ctaLink, data-cid=idea.cID)
         img(src=idea.imageSrc)
   h2.summary__heading= summary.heading

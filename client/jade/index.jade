@@ -6,8 +6,8 @@ block content
     .carousel__entry.active#content
       .container
         include index/introduction
-        include index/upsell-ideas
-        include index/why-o2-ideas
+        each idea in ideas
+          include index/idea
         include index/summary
       include layout/footer
     .carousel__entry#terms-and-conditions

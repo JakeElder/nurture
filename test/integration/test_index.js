@@ -51,6 +51,9 @@ describe('Index', function() {
     });
 
     it('should render introduction copy based on the LIFE_CYCLE and CALL_STATUS params', function() {
+      var handleFail = function(err) {
+        browser.resources.dump();
+      };
       nock('https://api.parse.com').get('/1/classes/settings').times(3)
         .reply(200, { results: [] });
       nock('https://api.parse.com').get('/1/classes/contentFragments').times(3)
@@ -60,30 +63,24 @@ describe('Index', function() {
       return Q.fcall(function() {
         return browser.visit('/?LC=E_LIFE&CS=N').then(function() {
           browser.assert.text('.introduction__copy', 'E_LIFE_N copy');
-        }, function(err) {
-          browser.resources.dump();
-        });
+        }, handleFail);
       }).then(function() {
         return browser.visit('/?LC=E_LIFE&CS=Y').then(function() {
           browser.assert.text('.introduction__copy', 'E_LIFE_Y copy');
-        }, function(err) {
-          browser.resources.dump();
-        });
+        }, handleFail);
       }).then(function() {
         return browser.visit('/?LC=OOC&CS=Y').then(function() {
           browser.assert.text('.introduction__copy', 'OOC_Y copy');
-        }, function(err) {
-          browser.resources.dump();
-        });
+        }, handleFail);
       });
     });
 
-    describe('With no UPSELL or WHY_O2 in query string', function() {
-      it('should render the WHY_O2 and UPSELL modules specified in the default query string', function() {
+    describe('With no IDEAS set in the query string', function() {
+      it('should render the idea modules specified in the default query string', function() {
         var settingsResponse = {
           results: [{
             key: 'DEFAULT_QUERY_STRING',
-            value: 'U=APPS&U=PUO&WO=MY_O2_B&WO=BLOG'
+            value: 'I=APPS&I=PUO&I=MY_O2_B&I=BLOG'
           }]
         };
         nock('https://api.parse.com').get('/1/classes/settings')

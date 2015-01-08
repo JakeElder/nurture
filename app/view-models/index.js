@@ -93,28 +93,12 @@ Object.defineProperty(proto, 'ideas', {
     'use strict';
 
     var viewModel = this;
-    var ideas = { 'upsell': [], 'whyO2': [] };
 
-    // Create an object containing two arrays, ideas.upsell and ideas.whyO2
-    ideas = _.mapValues(ideas, function(val, section) {
-      // Get an array of relevant ideas, sorted by their order as defined
-      // in the disposition helper
-      return viewModel._ideas.filter(function(idea) {
-        return viewModel._disposition[section].indexOf(idea.cID) !== -1;
-      }).map(function(idea) {
-        return new IdeaPresenter(idea);
-      }).sort(function(a, b) {
-        var aIndex = viewModel._disposition[section].indexOf(a.cID);
-        var bIndex = viewModel._disposition[section].indexOf(b.cID);
-        return aIndex - bIndex;
-      });
-    });
-
-    // Add their appearance numbers
-    ideas.upsell[0].number = 1;
-    ideas.upsell[1].number = 2;
-    ideas.whyO2[0].number  = 3;
-    ideas.whyO2[1].number  = 4;
+    var ideas = this._disposition.ideas.map(function(cID, idx) {
+      var idea = new IdeaPresenter(_.find(this._ideas, { cID: cID }));
+      idea.number = idx + 1;
+      return idea;
+    }, this);
 
     return ideas;
   }

@@ -86,23 +86,24 @@ describe('DispositionHelper', function() {
       describe('With multiple valid values set', function() {
         it('should return the supplied array of values', function() {
           var disposition = getDisposition({
-            query: { U: ['TAB', 'PUO'] }
+            query: { I: ['TAB', 'PUO', 'BLOG', 'ROAM'] }
           });
-          disposition.upsell.should.eql(['TAB', 'PUO']);
+          disposition.ideas.should.eql(['TAB', 'PUO', 'BLOG', 'ROAM']);
         });
       });
 
       describe('With multiple values, including invalid ones', function() {
         it('should return the default value', function() {
           var disposition = getDisposition({
-            query: { U: ['INVALID', 'PUO'] }
+            query: { I: ['INVALID', 'PUO'] }
           });
-          var defaultValue = DispositionHelper.PROPERTIES.upsell.default;
-          disposition.upsell.should.eql(defaultValue);
+          var defaultValue = DispositionHelper.PROPERTIES.ideas.default;
+          disposition.ideas.should.eql(defaultValue);
         });
       });
     });
   });
 
 });
+
 
