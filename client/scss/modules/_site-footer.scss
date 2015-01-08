@@ -11,7 +11,7 @@
 }
 
 .site-footer__container {
-  @extend %container;
+  @extend .container;
   box-sizing: border-box;
   padding-left: 20px;
   padding-right: 20px;
