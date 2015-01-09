@@ -52,6 +52,6 @@ window.app = {};
   }
 
   adjustMinHeight();
-  $(window).resize(adjustMinHeight);
+  $(window).on('load resize', adjustMinHeight);
 })();
 
