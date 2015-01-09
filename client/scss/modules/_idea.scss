@@ -15,7 +15,6 @@
 
 .idea__header {
   text-align: center;
-  margin-top: 48.5%;
   position: absolute;
   top: 0;
   width: 100%;
@@ -23,7 +22,6 @@
 
 .idea__body {
   position: relative;
-  margin-top: 133%;
 }
 
 .idea__heading {
@@ -61,30 +59,41 @@
     left: 8%;
   }
   .idea__header {
-    margin-bottom: 30%;
+    margin-top: 14.5%;
   }
   .idea__heading {
     position: relative;
     left: 3.8%;
   }
   .idea__body {
+    margin-top: 91.6%;
     margin-right: 20%;
   }
 }
 
 .even-idea {
   .idea__bg {
-    left: -2%;
+    left: -4%;
   }
   .idea__header {
-    margin-bottom: 30%;
+    margin-top: 15.5%;
   }
   .idea__heading {
     position: relative;
     right: 7px;
   }
   .idea__body {
+    margin-top: 98.43%;
     margin-left: 55px;
+  }
+}
+
+.first-idea {
+  .idea__header {
+    margin-top: 48.5%;
+  }
+  .idea__body {
+    margin-top: 127.92%;
   }
 }
 

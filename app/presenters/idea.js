@@ -34,10 +34,9 @@ Object.defineProperty(IdeaPresenter.prototype, 'backgroundImageSrc', {
   enumerable: true,
   get: function() {
     'use strict';
-    return [
-      'images/content-section-backgrounds/small/arrow-bg-to-bl.png',
-      'images/content-section-backgrounds/small/arrow-bg-to-br.png'
-    ][this.number % 2];
+    var dir = 'images/content-section-backgrounds/';
+    if (this.number == 1) { return dir + 'first-idea.png'; }
+    return dir + ['even-idea.png', 'odd-idea.png'][this.number % 2];
   }
 });
 
@@ -55,7 +54,9 @@ Object.defineProperty(IdeaPresenter.prototype, 'className', {
   enumerable: true,
   get: function() {
     'use strict';
-    return ['even', 'odd'][this.number % 2] + '-idea idea';
+    var className = ['even', 'odd'][this.number % 2] + '-idea idea';
+    if (this.number === 1) { className += ' first-idea'; }
+    return className;
   }
 });
 
