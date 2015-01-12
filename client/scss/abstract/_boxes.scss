@@ -9,7 +9,10 @@
 
 
 %alabaster-fade-box {
-  @include background-image(linear-gradient(top, $gallery 25%, $alabaster 100%));
+  background-image: url(images/gradients/alabaster-box.png);
+  background-position: left top;
+  background-color: $alabaster;
+  @include background-image(linear-gradient(to top, $gallery 25%, $alabaster 100%));
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -17,7 +20,7 @@
 %jelly-bean-box {
   background-image: url(images/gradients/jelly-bean-box.png);
   background-repeat: repeat-x;
-  @include background-image(linear-gradient(top, #1a2542 0, transparent 800px));
+  @include background-image(linear-gradient(#1a2542 0, transparent 800px));
   background-color: $jelly-bean;
   color: $white;
 }
