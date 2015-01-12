@@ -15,8 +15,9 @@
 }
 
 %jelly-bean-box {
+  background-image: url(images/gradients/jelly-bean-box.png);
+  background-repeat: repeat-x;
   @include background-image(linear-gradient(top, #1a2542 0, transparent 800px));
-  background-repeat: repeat;
   background-color: $jelly-bean;
   color: $white;
 }
