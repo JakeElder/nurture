@@ -25,3 +25,17 @@
   color: $white;
 }
 
+%o2-box {
+  background-image: url(images/gradients/o2.png);
+  @include background-image(linear-gradient(
+    #131a35 0%,
+    #045591 40%,
+    #2589c1 60%,
+    #73b4da 80%,
+    #a5cee6 100%
+  ));
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+  background-size: auto 100%;
+  color: $white;
+}
